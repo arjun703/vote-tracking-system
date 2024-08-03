@@ -2,11 +2,11 @@
 
 include './../credentials.php';
 
-$dbc= mysqli_query($DB_HOST, $DB_USER, $DB_PASS, $DB, $DB_PORT);
+$dbc= mysqli_connect($DB_HOST, $DB_USER, $DB_PASS, $DB, $DB_PORT) or die("Error connecting to database");
     
 $query = "SELECT * FROM user_votes  ORDER BY last_credited_at LIMIT 10";
     
-$result = mysqli_query($dbc, $query);
+$result = mysqli_query($dbc, $query) or die(mysqli_error($dbc));
 
 echo "total rows returned: " . mysqli_num_rows($result) . "<BR>";
 
