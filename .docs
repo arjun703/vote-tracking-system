@@ -1,0 +1,75 @@
+https://www.xtremetop100.com/in.php?site=1132376111
+
+user: 1132376111
+pass: 3y8uqa4yd
+
+https://www.panel.pwember.com/ (var/www/html/panel.pwember.com)
+
+user: nuit
+pass: veno123456
+
+SSH - Port 22
+IP address: 51.195.189.186
+user: root
+pass: xiUVa2y4EGNV8t
+
+mysql -- https://secureadmin.pwember.com/
+
+root
+k7ZoN7XjPNxjtk
+
+Please create a new database for this - it would be easier to track that way.
+
+--
+
+To create the buttons in the main page, its within var/www/html/panel.pwember.com/pages/main.php
+
+We want to give users either lkgold or lksilver (configurable by admin, this is an OR condition) - this can be in the code configurable
+Same with the timers
+
+done - it was edited for etopgames. perhaps to make it easier for you to test too,
+
+Xtremetop100:
+
+https://www.xtremetop100.com/in.php?site=1132376111
+
+user: 1132376111
+pass: 3y8uqa4yd
+
+Arenatop100:
+
+https://www.arena-top100.com/index.php?a=in&u=pwember
+
+user: pwember
+pass: 3y8uqa4yd
+
+API secret key: c380f0d4abd8fa27193f98ee
+
+Toparena100:
+
+https://www.top100arena.com/category/perfect-world?vote=100780
+
+user: info@pwember.com
+pass: 3y8uqa4yd
+
+Gtop100:
+
+https://gtop100.com/topsites/Perfect-World/sitedetails/Perfect-World-Ember-103844?vote=1
+
+user: info@pwember.com
+pass: 3y8uqa4yd
+
+TopG
+
+https://topg.org/perfect-world-private-servers/server-665948
+
+user: info@pwember.com
+pass: 3y8uqa4yd
+
+
+EtopGames:
+
+user: pwember
+pass: 3y8uqa4yd
+
+Here is all the logins and pass

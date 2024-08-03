@@ -1,0 +1,44 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color:black;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    max-width: 1024px;
+    width: 100%;
+}
+
+.vote-box {
+    background-color: #000;
+    color: #fff;
+    border: 1px solid #444;
+    padding: 20px;
+    border:1px solid white;
+    text-align: center;
+    width: calc(33.33% - 20px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.vote-box img {
+    max-width: 100%;
+    height: auto;
+}
+
+@media (max-width: 768px) {
+    .vote-box {
+        width: calc(50% - 20px);
+    }
+}
+
+@media (max-width: 480px) {
+    .vote-box {
+        width: 100%;
+    }
+}
