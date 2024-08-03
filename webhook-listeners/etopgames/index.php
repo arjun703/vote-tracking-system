@@ -4,8 +4,6 @@ http_response_code(200);
 
 echo "listening to etopgames";
 
-die();
-
 include './../../credintials.php';
 include './../utils.php';
 
