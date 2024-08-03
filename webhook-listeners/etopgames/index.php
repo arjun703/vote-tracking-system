@@ -12,6 +12,8 @@ $inputData = file_get_contents('php://input');
 
 error_log($inputData);
 
+echo $inputData;
+
 $settings = returnSettings('./../../settings.json');
      
 $userid = isset($_POST['userid']) ? $_POST['userid'] : null;
