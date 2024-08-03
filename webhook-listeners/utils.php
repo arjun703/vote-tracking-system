@@ -2,7 +2,7 @@
 
 function insertEntryIntoDatabase($userid, $ip, $srcWebsite){
 
-    $dbc = mysqli_connect($DB_HOST, $DB_USER, $DB_PASS, $DB, $DB_PORT);
+    $dbc = mysqli_connect($DB_HOST, $DB_USER, $DB_PASS, $DB, $DB_PORT) or die("Error connecting to the database");
 
     $userid = mysqli_real_escape_string($dbc, $userid);
     $ip = mysqli_real_escape_string($dbc, $ip);
@@ -15,7 +15,9 @@ function insertEntryIntoDatabase($userid, $ip, $srcWebsite){
             ( '$userid', '$ip', '$srcWebsite', NOW() )
     ";
 
-    mysqli_query($dbc, $query) or error_log(mysqli_error($dbc)) ;
+    mysqli_query($dbc, $query) or error_log(mysqli_error($dbc)) or die(mysqli_error($dbc));
+
+    echo "Succesfully inserted the data";
 
     mysqli_close($dbc);
 
@@ -106,6 +108,8 @@ function validateAndTakeAppropriateAction($userid, $ip, $srcWebsite){
 
     if(checkIfValidBasedOnIP($ip)){
         insertEntryIntoDatabase($userid, $ip, $srcWebsite);
+    }else{
+        die("not valid");
     }
     
 }
