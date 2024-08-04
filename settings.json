@@ -20,6 +20,13 @@
             "name": "top100arena",
             "btn_img_url": "https://www.top100arena.com/hit/100780/big",
             "voting_url_without_userid": "https://www.top100arena.com/listing/100780/vote?incentive="
+        },
+
+        {
+            "handle": "gtop100",
+            "name": "gtop100",
+            "btn_img_url": "https://gtop100.com/assets/images/votebutton.jpg",
+            "voting_url_without_userid": "https://www.top100arena.com/listing/100780/vote?incentive="
         }
     ]
 }

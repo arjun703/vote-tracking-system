@@ -7,7 +7,7 @@ error_log("incoming request for top100arena");
 error_log(json_encode($_GET));
 
  
-if(!isset($_POST['userid']) || !isset($_POST['userip']) ||  !isset($_POST['voted']) ){
+if(!isset($GET['userid'])  ){
     die("Bad request");
 }
 
@@ -25,12 +25,12 @@ error_log($inputData);
 
 $settings = returnSettings('./../../settings.json');
 
-$userid = isset($_POST['userid']) ? $_POST['userid'] : null;
-$userip = isset($_POST['userip']) ? $_POST['userip'] : null;
-$is_valid  = isset($_POST['voted'])  ? (int)$_POST['voted'] : 0;
+$userid = isset($_GET['userid']) ? $_POST['userid'] : null;
+$userip = retrieveIpFromDatabase($userid);
+$is_valid  = 1;
    
-if (!is_null($userid) && $valid  === 1 ){
-    validateAndTakeAppropriateAction($userid, $userip, 'arenatop100');
+if (!is_null($userid) && $is_valid  === 1 ){
+    validateAndTakeAppropriateAction($userid, $userip, 'top100arena');
 }else{
     error_log("Either userid is null or is_valid is 0");
 }
