@@ -48,6 +48,8 @@ function checkIfValidBasedOnIP($ip){
 
     $row = mysqli_fetch_assoc($result);
 
+    echo json_encode($row);
+
     echo "<BR>";
 
     echo "raw seconds elapsed: " . $row['seconds_elapsed'];
