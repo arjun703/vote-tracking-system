@@ -17,7 +17,7 @@ function insertEntryIntoDatabase($userid, $ip, $srcWebsite){
             ( '$userid', '$ip', '$srcWebsite', NOW() )
     ";
 
-    mysqli_query($dbc, $query) or error_log(mysqli_error($dbc)) or die(mysqli_error($dbc));
+    mysqli_query($dbc, $query)  or die(mysqli_error($dbc));
 
     echo "Succesfully inserted the data";
 
