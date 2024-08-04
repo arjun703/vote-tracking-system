@@ -2,6 +2,8 @@
 
 function insertEntryIntoDatabase($userid, $ip, $srcWebsite){
 
+    global $DB_HOST; global $DB_USER; global $DB_PASS; global $DB; global $DB_PORT;
+
     $dbc = mysqli_connect($DB_HOST, $DB_USER, $DB_PASS, $DB, $DB_PORT) or die("Error connecting to the database");
 
     $userid = mysqli_real_escape_string($dbc, $userid);
@@ -27,6 +29,8 @@ function checkIfValidBasedOnIP($ip){
     
     global $settings;
 
+    global $DB_HOST; global $DB_USER; global $DB_PASS; global $DB; global $DB_PORT;
+
     $CYCLE_TIME_IN_HOURS = (int) $settings['cycle_time_in_hrs'];
 
     $dbc = mysqli_connect($DB_HOST, $DB_USER, $DB_PASS, $DB, $DB_PORT);
@@ -45,7 +49,7 @@ function checkIfValidBasedOnIP($ip){
 
     $secondsElapsedSinceLastVote = (int) $row['seconds_elapsed'];
 
-    if($secondsElapsedSinceLastVote < ($CYCLE_IN_HOURS * 3600) ){
+    if($secondsElapsedSinceLastVote < ($CYCLE_TIME_IN_HOURS * 3600) ){
         // user tried to vote again within the cycle time
         mysqli_close($dbc);
         return false;
