@@ -123,6 +123,8 @@ function returnSettings($filePath){
         die('Error decoding JSON: ' . json_last_error_msg());
     }
 
+    return $jsonData;
+
 }
 
 function validateAndTakeAppropriateAction($userid, $ip, $srcWebsite){
