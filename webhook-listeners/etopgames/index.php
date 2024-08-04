@@ -4,7 +4,7 @@ http_response_code(200);
  
 echo "listening to etopgames";
  
-include './../../credintials.php';
+include './../../credentials.php';
 include './../utils.php';
  
 // Read the raw POST data from php://input
