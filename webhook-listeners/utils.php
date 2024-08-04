@@ -58,7 +58,7 @@ function checkIfValidBasedOnIP($ip){
 
     echo "<BR>";
 
-    echo "raw seconds elapsed: " . $row['seconds_elapsed'];
+    echo "raw seconds elapsed: " . $row['seconds_elapsed'] . ", cycle time: " . $CYCLE_TIME_IN_HOURS * 3600;
 
     echo "<BR>";
 
