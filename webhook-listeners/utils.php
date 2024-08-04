@@ -41,6 +41,7 @@ function checkIfValidBasedOnIP($ip){
 
     if(mysqli_num_rows($result) === 0){
         // user has never voted
+        echo "user has never voted";
         mysqli_close($dbc);
         return true;
     }
@@ -49,12 +50,16 @@ function checkIfValidBasedOnIP($ip){
 
     $secondsElapsedSinceLastVote = (int) $row['seconds_elapsed'];
 
+    echo "<BR> Seconds elapsed: " . $secondsElapsedSinceLastVote . "<BR><BR>";
+
     if($secondsElapsedSinceLastVote < ($CYCLE_TIME_IN_HOURS * 3600) ){
         // user tried to vote again within the cycle time
+        echo "user tried to vote again withing the cycle time";
         mysqli_close($dbc);
         return false;
     }else{
         // okay to vote
+        echo "okay to vote";
         mysqli_close($dbc);
         return true;
     }
