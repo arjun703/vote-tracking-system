@@ -48,6 +48,8 @@ function checkIfValidBasedOnIP($ip){
 
     $row = mysqli_fetch_assoc($result);
 
+    echo "duming the json_encode(row) : ";
+
     echo json_encode($row);
 
     echo "<BR>";
