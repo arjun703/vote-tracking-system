@@ -14,8 +14,8 @@ error_log($inputData);
 
 echo $inputData;
 
-$settings = returnSettings('./../../settings.json');
-     
+$settings = json_decode(returnSettings('./../../settings.json'));
+         
 $userid = isset($_POST['userid']) ? $_POST['userid'] : null;
 $userip = isset($_POST['userip']) ? $_POST['userip'] : null;
      

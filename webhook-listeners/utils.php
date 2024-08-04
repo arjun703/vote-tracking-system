@@ -37,7 +37,7 @@ function checkIfValidBasedOnIP($ip){
 
     $dbc = mysqli_connect($DB_HOST, $DB_USER, $DB_PASS, $DB, $DB_PORT);
 
-    $query = "SELECT TIMESTAMPDIFF(SECOND, user_votes.last_voted_at, NOW()) AS seconds_elapsed FROM user_votes WHERE ip ='$ip' ORDER BY last_voted_at DESC LIMIT 1 ";
+    $query = "SELECT * FROM user_votes WHERE ip ='$ip' ORDER BY last_voted_at DESC LIMIT 1 ";
 
     echo $query;
 
@@ -58,11 +58,11 @@ function checkIfValidBasedOnIP($ip){
 
     echo "<BR>";
 
-    echo "raw seconds elapsed: " . $row['seconds_elapsed'] . ", cycle time: " . $CYCLE_TIME_IN_HOURS * 3600;
+    echo "last voted at elapsed: " . $row['last_voted_at'] . ", cycle time: " . $CYCLE_TIME_IN_HOURS * 3600;
 
     echo "<BR>";
 
-    $secondsElapsedSinceLastVote = (int) $row['seconds_elapsed'];
+    $secondsElapsedSinceLastVote = (int) $row['last_voted_at'];
 
     echo "<BR> Seconds elapsed: " . $secondsElapsedSinceLastVote . "<BR><BR>";
 
