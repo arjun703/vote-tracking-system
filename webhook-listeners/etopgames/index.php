@@ -2,6 +2,10 @@
  
 http_response_code(200);
  
+if(!isset($_POST['userid']) || !isset($_POST['userip'])){
+    die("Bad request");
+}
+
 echo "listening to etopgames";
  
 include './../../credentials.php';
