@@ -20,7 +20,7 @@ function insertEntryIntoDatabase($userid, $ip, $srcWebsite){
     mysqli_query($dbc, $query)  or die(mysqli_error($dbc));
 
     echo "Succesfully inserted the data";
-
+    error_log("Succesfully inserted the data");
     mysqli_close($dbc);
 
 }
@@ -38,7 +38,7 @@ function checkIfValidBasedOnIP($ip){
     if(!is_numeric($CYCLE_TIME_IN_HOURS)){
         die("CYCLE_TIME_IN_HOURS is not numeric");
     }
-    
+
     $CYCLE_TIME_IN_HOURS = (int)  $settings['cycle_time_in_hrs'];
 
     $dbc = mysqli_connect($DB_HOST, $DB_USER, $DB_PASS, $DB, $DB_PORT);
@@ -50,6 +50,7 @@ function checkIfValidBasedOnIP($ip){
     if(mysqli_num_rows($result) === 0){
         // user has never voted
         echo "user has never voted";
+        error_log("user has never voted");
         mysqli_close($dbc);
         return true;
     }
@@ -57,6 +58,7 @@ function checkIfValidBasedOnIP($ip){
     $row = mysqli_fetch_assoc($result);
 
     if(!is_numeric($row['seconds_elapsed'])){
+        error_log("seconds elapsed is not numeric");
         die("seconds elapsed is not numeric");
     }
 
@@ -65,10 +67,12 @@ function checkIfValidBasedOnIP($ip){
     if($secondsElapsedSinceLastVote < ($CYCLE_TIME_IN_HOURS * 3600) ){
         // user tried to vote again within the cycle time
         echo "user tried to vote again withing the cycle time";
+        error_log("user tried to vote again withing the cycle time");
         mysqli_close($dbc);
         return false;
     }else{
         // okay to vote
+        error_log("okay to vote");
         echo "okay to vote";
         mysqli_close($dbc);
         return true;
@@ -95,9 +99,10 @@ function dumpPOSTdata(){
         
         // Close the file
         fclose($fileHandle);
-        
+        error_log("Data successfully appended to the file.");
         echo "Data successfully appended to the file.";
     } else {
+        error_log("Data successfully appended to the file.");
         echo "Failed to open the file.";
     }
 
@@ -118,6 +123,7 @@ function returnSettings($filePath){
 
     // Check if JSON decoding was successful
     if (json_last_error() !== JSON_ERROR_NONE) {
+        error_log("Error decoding JSON: " . json_last_error_msg());
         die('Error decoding JSON: ' . json_last_error_msg());
     }
 
@@ -130,6 +136,7 @@ function validateAndTakeAppropriateAction($userid, $ip, $srcWebsite){
     if(checkIfValidBasedOnIP($ip)){
         insertEntryIntoDatabase($userid, $ip, $srcWebsite);
     }else{
+        error_log("user tried to vote within 12 hours");
         die("not valid");
     }
     

@@ -1,6 +1,6 @@
 <?php
- 
-error_log("incoming request for etopgames");
+
+error_log("incoming request for arenatop100");
 
 http_response_code(200);
  
@@ -27,7 +27,7 @@ $userip = isset($_POST['userip']) ? $_POST['userip'] : null;
 $is_valid  = isset($_POST['voted'])  ? (int)$_POST['voted'] : 0;
    
 if (!is_null($userid) && $valid  === 1 ){
-    validateAndTakeAppropriateAction($userid, $userip, 'etopgames');
+    validateAndTakeAppropriateAction($userid, $userip, 'arenatop100');
 }else{
     error_log("Either userid is null or is_valid is 0");
 }
