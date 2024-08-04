@@ -38,10 +38,8 @@ function checkIfValidBasedOnIP($ip){
     if(!is_numeric($CYCLE_TIME_IN_HOURS)){
         die("CYCLE_TIME_IN_HOURS is not numeric");
     }
-
+    
     $CYCLE_TIME_IN_HOURS = (int)  $settings['cycle_time_in_hrs'];
-
-    echo "cycle time in hrs: ". $CYCLE_TIME_IN_HOURS;
 
     $dbc = mysqli_connect($DB_HOST, $DB_USER, $DB_PASS, $DB, $DB_PORT);
 
