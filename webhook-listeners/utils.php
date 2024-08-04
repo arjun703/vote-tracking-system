@@ -141,3 +141,24 @@ function validateAndTakeAppropriateAction($userid, $ip, $srcWebsite){
     }
     
 }
+
+function retrieveIpFromDatabase($userID){ 
+
+    global $DB_HOST; global $DB_USER; global $DB_PASS; global $DB; global $DB_PORT;
+
+    $dbc = mysqli_connect($DB_HOST, $DB_USER, $DB_PASS, $DB, $DB_PORT) or die("Error connecting to the database");
+
+    $query = "SELECT ip FROM users_ips WHERE user_id = '$userID' ";
+
+    $result = mysqli_query($dbc, $query) or die("Error retrieving the IP for the user");
+
+    if(mysqli_num_rows($result) == 1){
+        $row = mysqli_fetch_assoc($result);
+        if(isset($row['ip'])){
+            return $row['ip'];
+        }
+    }
+
+    die("No record found");
+    
+}

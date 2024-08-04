@@ -14,6 +14,12 @@
             "name": "arenatop100",
             "btn_img_url": "https://www.arena-top100.com/images/vote/perfect-world-private-servers.png",
             "voting_url_without_userid": "https://www.arena-top100.com/index.php?a=in&u=pwember&id="
+        },
+        {
+            "handle": "top100arena",
+            "name": "top100arena",
+            "btn_img_url": "https://www.top100arena.com/hit/100780/big",
+            "voting_url_without_userid": "https://www.top100arena.com/listing/100780/vote?incentive="
         }
     ]
 }
