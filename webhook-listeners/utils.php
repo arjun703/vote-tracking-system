@@ -33,9 +33,13 @@ function checkIfValidBasedOnIP($ip){
 
     $CYCLE_TIME_IN_HOURS = (int) $settings['cycle_time_in_hrs'];
 
+    echo "cycle time in hrs: ". $CYCLE_TIME_IN_HOURS;
+
     $dbc = mysqli_connect($DB_HOST, $DB_USER, $DB_PASS, $DB, $DB_PORT);
 
     $query = "SELECT TIMESTAMPDIFF(SECOND, user_votes.last_voted_at, NOW()) AS seconds_elapsed FROM user_votes WHERE ip ='$ip' ORDER BY last_voted_at DESC LIMIT 1 ";
+
+    echo $query;
 
     $result = mysqli_query($dbc, $query);
 
