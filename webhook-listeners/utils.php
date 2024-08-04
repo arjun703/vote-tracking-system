@@ -25,23 +25,29 @@ function insertEntryIntoDatabase($userid, $ip, $srcWebsite){
 
 }
 
+
+
 function checkIfValidBasedOnIP($ip){
     
     global $settings;
 
     global $DB_HOST; global $DB_USER; global $DB_PASS; global $DB; global $DB_PORT;
 
-    $CYCLE_TIME_IN_HOURS = (int) $settings['cycle_time_in_hrs'];
+    $CYCLE_TIME_IN_HOURS =  $settings['cycle_time_in_hrs'];
+
+    if(!is_numeric($CYCLE_TIME_IN_HOURS)){
+        die("CYCLE_TIME_IN_HOURS is not numeric");
+    }
+
+    $CYCLE_TIME_IN_HOURS = (int)  $settings['cycle_time_in_hrs'];
 
     echo "cycle time in hrs: ". $CYCLE_TIME_IN_HOURS;
 
     $dbc = mysqli_connect($DB_HOST, $DB_USER, $DB_PASS, $DB, $DB_PORT);
 
-    $query = "SELECT * FROM user_votes WHERE ip ='$ip' ORDER BY last_voted_at DESC LIMIT 1 ";
+    $query = "SELECT TIMESTAMPDIFF(SECOND, user_votes.last_voted_at, NOW()) AS seconds_elapsed FROM user_votes WHERE ip ='$ip' ORDER BY last_voted_at DESC LIMIT 1 ";
 
-    echo $query;
-
-    $result = mysqli_query($dbc, $query);
+    $result = mysqli_query($dbc, $query) or die(mysqli_error($dbc));
 
     if(mysqli_num_rows($result) === 0){
         // user has never voted
@@ -52,19 +58,11 @@ function checkIfValidBasedOnIP($ip){
 
     $row = mysqli_fetch_assoc($result);
 
-    echo "duming the json_encode(row) : ";
+    if(!is_numeric($row['seconds_elapsed'])){
+        die("seconds elapsed is not numeric");
+    }
 
-    echo json_encode($row);
-
-    echo "<BR>";
-
-    echo "last voted at elapsed: " . $row['last_voted_at'] . ", cycle time: " . $CYCLE_TIME_IN_HOURS * 3600;
-
-    echo "<BR>";
-
-    $secondsElapsedSinceLastVote = (int) $row['last_voted_at'];
-
-    echo "<BR> Seconds elapsed: " . $secondsElapsedSinceLastVote . "<BR><BR>";
+    $secondsElapsedSinceLastVote = (int) $row['seconds_elapsed'];
 
     if($secondsElapsedSinceLastVote < ($CYCLE_TIME_IN_HOURS * 3600) ){
         // user tried to vote again within the cycle time
