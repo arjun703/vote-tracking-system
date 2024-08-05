@@ -26,7 +26,13 @@
             "handle": "gtop100",
             "name": "gtop100",
             "btn_img_url": "https://gtop100.com/assets/images/votebutton.jpg",
-            "voting_url_without_userid": "https://www.top100arena.com/listing/100780/vote?incentive="
+            "voting_url_without_userid": "https://gtop100.com/topsites/Perfect-World/sitedetails/Perfect-World-Ember-103844?vote=1&pingUsername="
+        },
+        {
+            "handle": "topg",
+            "name": "topg",
+            "btn_img_url": "https://topg.org/topg2.gif",
+            "voting_url_without_userid": "https://gtop100.com/topsites/Perfect-World/sitedetails/Perfect-World-Ember-103844?vote=1&pingUsername="
         }
     ]
 }
