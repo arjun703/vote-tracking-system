@@ -177,13 +177,14 @@ function updateCoinCount($userid, $addby){
     }
 
     error_log("trying to add $addby coins to $userid");
+
     echo "trying to add $addby coins to $userid";
 
     global $ACC_DB_HOST; global $ACC_DB_USER; global $ACC_DB_PASS; global $ACC_DB;
 
     $dbc = mysqli_connect($ACC_DB_HOST, $ACC_DB_USER, $ACC_DB_PASS, $ACC_DB) or die("Error connecting to the database: " . mysqli_connect_error() );
 
-    $query = "UPDATE users SET iksilver = iksilver + $addby  WHERE ID = '$userID' ";
+    $query = "UPDATE users SET lksilver = lksilver + $addby  WHERE ID = '$userID' ";
 
     $result = mysqli_query($dbc, $query) or die("Error adding count to the user user: " . mysqli_error($dbc));
     
