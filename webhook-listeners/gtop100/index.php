@@ -19,7 +19,6 @@ echo "listening to gtop100";
 include './../../credentials.php';
 include './../utils.php';
 
-
 $settings = returnSettings('./../../settings.json');
 
 // You should validate and sanitize all input.
