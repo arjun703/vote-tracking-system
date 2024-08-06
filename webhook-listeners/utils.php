@@ -33,10 +33,6 @@ function checkIfValidBasedOnIP($ip, $srcWebsite){
 
     global $DB_HOST; global $DB_USER; global $DB_PASS; global $DB; global $DB_PORT;
 
-    if(!is_numeric($CYCLE_TIME_IN_HOURS)){
-        die("CYCLE_TIME_IN_HOURS is not numeric");
-    }
-
     $waiting_time_in_seconds_for_next_vote = 0;
 
     foreach ($settings['voting_websites'] as $voting_site) {
