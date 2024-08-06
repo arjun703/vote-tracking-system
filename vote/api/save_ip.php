@@ -1,6 +1,6 @@
 <?php
 
-include './../credentials.php';
+include './../../credentials.php';
 
 function saveIpToDatabase($userID, $ip){ 
 
