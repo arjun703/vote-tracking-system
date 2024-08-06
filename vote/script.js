@@ -145,7 +145,7 @@ async function fetchDataAndRender(){
                                         ${  Math.floor((voting_website.waiting_time_in_seconds_for_next_vote - voting_website.seconds_elapsed) / 3600)   }h remaining
                                     </div>
                                 `: `
-                                    <button style="display:block;z-index:111122;position:relative; padding: 5px 15px" onclick="handleVoteDataClick(event)">Vote</button>
+                                    <button style="display:block; width:100%;z-index:111122;position:relative; padding: 5px 15px" onclick="handleVoteDataClick(event)">Vote</button>
                                 `
                         }
                         <img  class="pt-2" src="${voting_website.btn_img_url}" alt="${voting_website.name}" />
