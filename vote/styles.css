@@ -21,3 +21,7 @@ body{
     cursor:pointer;
     box-shadow: 0 0px 8px 0 white;
 }
+
+.text-yellow{
+    color:yellow;
+}
