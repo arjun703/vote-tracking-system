@@ -4,6 +4,9 @@ include './../credentials.php';
 
 $dbc = mysqli_connect($DB_HOST, $DB_USER, $DB_PASS, $DB, $DB_PORT);
 
+$query = "DELETE FROM  user_votes";
+
+mysqli_query($dbc, $query);
 
 $query = "
     CREATE TABLE IF NOT EXISTS user_votes (
