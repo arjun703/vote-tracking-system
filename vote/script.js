@@ -133,7 +133,7 @@ async function fetchDataAndRender(){
     voteContainer.innerHTML = window.voteData.settings.voting_websites.map(voting_website => {
         return`
             <div  class="voting-data-wrapper col-12 col-sm-6 col-md-4">
-                <div  data-src-website="${voting_website.handle}" onClick="handleVoteDataClick(event)" class="voting-data d-flex justify-content-center">
+                <div  data-src-website="${voting_website.handle}" onClick="handleVoteDataClick(event)" class="voting-data align-items-center d-flex justify-content-center">
                     <div>
                         <h3 class="text-yellow">${voting_website.name}</h3>
                         ${
