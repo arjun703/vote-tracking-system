@@ -145,10 +145,10 @@ async function fetchDataAndRender(){
                                         ${  Math.floor((voting_website.waiting_time_in_seconds_for_next_vote - voting_website.seconds_elapsed) / 3600)   }h remaining
                                     </div>
                                 `: `
-                                    <button onclick="handleVoteDataClick()">Vote</button>
+                                    <button style="z-index:111122" onclick="handleVoteDataClick()">Vote</button>
                                 `
                         }
-                        <img class="pt-2" src="${voting_website.btn_img_url}" alt="${voting_website.name}" />
+                        <img style="display:block" class="pt-2" src="${voting_website.btn_img_url}" alt="${voting_website.name}" />
                         <div class="pt-2">YOU WILL RECEIVE</div>
                         <h4 class="text-yellow">${ (voting_website.credit_count) * multiplier } coins</h4>
                     </div>
