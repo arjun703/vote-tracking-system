@@ -26,7 +26,7 @@ $valid = 1; // respone from topg means it is always valid
 
 $pingUsername = $_GET["custom"] ?? null;
    
-if (!is_null($pingUsername) && $valid  === 1 ){
+if ( !is_null($pingUsername) && !is_null($voterIP) && $valid  === 1 ){
     validateAndTakeAppropriateAction($pingUsername, $voterIP, 'xtremetop100');
 }else{
     error_log("Either userid is null or not valid");
