@@ -13,7 +13,7 @@ if(!isset($GET['userid'])  ){
 
 error_log("userid");
 
-echo "listening to etopgames";
+echo "listening to top100arena";
  
 include './../../credentials.php';
 include './../utils.php';
