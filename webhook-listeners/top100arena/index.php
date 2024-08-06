@@ -7,7 +7,7 @@ error_log("incoming request for top100arena");
 error_log(json_encode($_GET));
 
  
-if(!isset($GET['userid'])  ){
+if(!isset($_GET['userid'])  ){
     die("Bad request");
 }
 
@@ -25,7 +25,7 @@ error_log($inputData);
 
 $settings = returnSettings('./../../settings.json');
 
-$userid = isset($_GET['userid']) ? $_POST['userid'] : null;
+$userid = isset($_GET['userid']) ? $_GET['userid'] : null;
 $userip = retrieveIpFromDatabase($userid);
 $is_valid  = 1;
    
