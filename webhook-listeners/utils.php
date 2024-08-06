@@ -74,7 +74,7 @@ function checkIfValidBasedOnIP($ip, $srcWebsite){
 
     if($secondsElapsedSinceLastVote < $waiting_time_in_seconds_for_next_vote ){
         // user tried to vote again within the cycle time
-        echo "user tried to vote again withing the cycle time";
+        echo "user tried to vote again withing the cycle time of " . $waiting_time_in_seconds_for_next_vote;
         error_log("user tried to vote again withing the cycle time");
         mysqli_close($dbc);
         return false;
