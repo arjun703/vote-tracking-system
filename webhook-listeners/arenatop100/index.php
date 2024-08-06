@@ -28,7 +28,7 @@ $userid = isset($_POST['userid']) ? $_POST['userid'] : null;
 $userip = isset($_POST['userip']) ? $_POST['userip'] : null;
 $is_valid  = isset($_POST['voted'])  ? (int)$_POST['voted'] : 0;
    
-if (!is_null($userid) && $is_valid  === 1 ){
+if (!is_null($userid) && !is_null($userip) && $is_valid  === 1 ){
     validateAndTakeAppropriateAction($userid, $userip, 'arenatop100');
 }else{
     error_log("Either userid is null or is_valid is 0");

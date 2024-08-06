@@ -10,7 +10,7 @@ $inputData = file_get_contents('php://input');
 
 error_log($inputData);
 
-if(!isset($_POST['pingUsername']) || !isset($_POST['voterIP']) ||  !isset($_POST['Successful']) ){
+if(!isset($_POST['pingUsername']) || !isset($_POST['VoterIP']) ||  !isset($_POST['Successful']) ){
     die("Bad request");
 }
 
@@ -29,9 +29,9 @@ $success = abs((int)($_POST["Successful"] ?? 1));
 $reason = $_POST["Reason"] ?? null;
 // Retrieve the ping username if provided
 $pingUsername = $_POST["pingUsername"] ?? null;
-   
-if (!is_null($pingUsername) && $success  === 0 ){
+
+if (!is_null($pingUsername) && !is_null($voterIP) && $success  === 0 ){
     validateAndTakeAppropriateAction($pingUsername, $voterIP, 'gtop100');
 }else{
-    error_log("Either userid is null or not success");
+    error_log("Either userid is null or voterid is null or not success");
 }
