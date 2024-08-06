@@ -142,7 +142,7 @@ function validateAndTakeAppropriateAction($userid, $ip, $srcWebsite){
         }
 
     }else{
-        error_log("user tried to vote within 12 hours");
+        error_log("user tried to vote within waiting time");
         die("not valid");
     }
     
@@ -175,6 +175,9 @@ function updateCoinCount($userid, $addby){
         error_log("addby is not numeric");
         die("addby is not numeric");
     }
+
+    error_log("trying to add $addby coins to $userid");
+    echo "trying to add $addby coins to $userid";
 
     global $ACC_DB_HOST; global $ACC_DB_USER; global $ACC_DB_PASS; global $ACC_DB;
 
