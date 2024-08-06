@@ -39,15 +39,20 @@ const voteData = [
 
 const voteContainer = document.getElementById('voteContainer');
 
-voteData.forEach(vote => {
-    const voteBox = document.createElement('div');
-    voteBox.className = 'vote-box';
-    voteBox.innerHTML = `
-        <h3>${vote.name}</h3>
-        <p>You can vote ${vote.interval}.</p>
-        <img src="${vote.imgSrc}" alt="${vote.name}">
-        <p>YOU WILL RECEIVE</p>
-        <p>${vote.reward}</p>
-    `;
-    voteContainer.appendChild(voteBox);
-});
+function handleVoteDataClick(event){
+    
+}
+
+voteContainer.innerHTML = voteData.map(vote => {
+    return`
+        <div  class="voting-data-wrapper col-12 col-sm-6 col-md-4">
+            <div onClick="handleVoteDataClick(event)" class="voting-data">
+                <h3>${vote.name}</h3>
+                <p>You can vote ${vote.interval}.</p>
+                <img src="${vote.imgSrc}" alt="${vote.name}">
+                <p>YOU WILL RECEIVE</p>
+                <p>${vote.reward}</p>
+            </div>
+        </div>
+    `
+}).join('');
