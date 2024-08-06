@@ -158,6 +158,8 @@ async function fetchDataAndRender(){
         <div class="pt-5 text-center">${window.voteData.settings.disclaimer_text}</div>
     `
 
+
+    
 }
 
 fetchDataAndRender()
