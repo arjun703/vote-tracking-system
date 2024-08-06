@@ -145,8 +145,8 @@ async function fetchDataAndRender(){
                                     </div>
                                 `: ''
                         }
-                        <img class="pt-2" src="${voting_website.btn_img_url}" alt="${voting_website.name}">
-                        <div class="pt-2">YOU WILL RECEIVE</p>
+                        <img class="pt-2" src="${voting_website.btn_img_url}" alt="${voting_website.name}" />
+                        <div class="pt-2">YOU WILL RECEIVE</div>
                         <h4 class="text-yellow">${ (voting_website.credit_count) * multiplier } coins</h4>
                     </div>
                 </div>
