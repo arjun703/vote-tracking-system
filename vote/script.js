@@ -133,10 +133,10 @@ async function fetchDataAndRender(){
     voteContainer.innerHTML = window.voteData.settings.voting_websites.map(voting_website => {
         
         return`
-            <div  class="voting-data-wrapper col-12 col-sm-6 col-md-4" onClick="handleVoteDataClick(event)">
-                <div  data-src-website="${voting_website.handle}" onClick="handleVoteDataClick(event)" class="voting-data align-items-center d-flex justify-content-center">
-                    <div onClick="handleVoteDataClick(event)">
-                        <h3 onClick="handleVoteDataClick(event)" class="text-yellow">${voting_website.name}</h3>
+            <div  class="voting-data-wrapper col-12 col-sm-6 col-md-4">
+                <div  data-src-website="${voting_website.handle}" class="voting-data align-items-center d-flex justify-content-center">
+                    <div>
+                        <h3  class="text-yellow">${voting_website.name}</h3>
                         ${
                             voting_website.seconds_elapsed > 0 &&  (voting_website.seconds_elapsed < voting_website.waiting_time_in_seconds_for_next_vote ) 
                                 ? `
@@ -144,11 +144,13 @@ async function fetchDataAndRender(){
                                     <div class="text-yellow">
                                         ${  Math.floor((voting_website.waiting_time_in_seconds_for_next_vote - voting_website.seconds_elapsed) / 3600)   }h remaining
                                     </div>
-                                `: ''
+                                `: `
+                                    <button onclick="handleVoteDataClick()">Vote</button>
+                                `
                         }
-                        <img onClick="handleVoteDataClick(event)"  class="pt-2" src="${voting_website.btn_img_url}" alt="${voting_website.name}" />
-                        <div onClick="handleVoteDataClick(event)"  class="pt-2">YOU WILL RECEIVE</div>
-                        <h4 onClick="handleVoteDataClick(event)" class="text-yellow">${ (voting_website.credit_count) * multiplier } coins</h4>
+                        <img class="pt-2" src="${voting_website.btn_img_url}" alt="${voting_website.name}" />
+                        <div class="pt-2">YOU WILL RECEIVE</div>
+                        <h4 class="text-yellow">${ (voting_website.credit_count) * multiplier } coins</h4>
                     </div>
                 </div>
             </div>
