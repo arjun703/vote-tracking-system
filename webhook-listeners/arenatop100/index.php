@@ -12,7 +12,7 @@ if(!isset($_POST['userid']) || !isset($_POST['userip']) ||  !isset($_POST['voted
 
 error_log("userid");
 
-echo "listening to etopgames";
+echo "listening to arenatop100";
  
 include './../../credentials.php';
 include './../utils.php';

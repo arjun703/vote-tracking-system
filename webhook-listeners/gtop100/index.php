@@ -14,7 +14,7 @@ if(!isset($_POST['pingUsername']) || !isset($_POST['voterIP']) ||  !isset($_POST
     die("Bad request");
 }
 
-echo "listening to etopgames";
+echo "listening to gtop100";
  
 include './../../credentials.php';
 include './../utils.php';
