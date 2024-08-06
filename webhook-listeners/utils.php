@@ -184,7 +184,7 @@ function updateCoinCount($userid, $addby){
 
     $dbc = mysqli_connect($ACC_DB_HOST, $ACC_DB_USER, $ACC_DB_PASS, $ACC_DB) or die("Error connecting to the database: " . mysqli_connect_error() );
 
-    $query = "UPDATE users SET lksilver = lksilver + $addby  WHERE ID = $userID ";
+    $query = "UPDATE users SET lksilver = lksilver + $addby  WHERE ID = $userid ";
 
     echo "<BR>";
 
