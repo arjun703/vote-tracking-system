@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 error_log("incoming request for arenatop100");
 
 http_response_code(200);

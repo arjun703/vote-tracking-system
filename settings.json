@@ -1,38 +1,57 @@
 {
-    "cycle_time_in_hrs": 12,
     "credit_system_status": "ON",
-    "credit_per_vote_in_dollars": 20,
+    "credit_multiplier":{
+        "multiply_by": 2,
+        "active_on_days_of_month": [1,2,3,4,5]
+    },
     "voting_websites": [
         {
             "handle": "etopgames",
-            "name": "etopgames",
+            "waiting_time_in_seconds_for_next_vote": 72000,
+            "name": "EtopGames",
+            "credit_count": 10,
             "btn_img_url": "https://www.etopgames.com/button.php?u=pwember&buttontype=static",
             "voting_url_without_userid": "https://www.etopgames.com/index.php?a=in&u=pwember&id="
         },
         {
             "handle": "arenatop100",
-            "name": "arenatop100",
+            "waiting_time_in_seconds_for_next_vote": 43200,
+            "name": "ArenaTop100",
+            "credit_count": 5,
             "btn_img_url": "https://www.arena-top100.com/images/vote/perfect-world-private-servers.png",
             "voting_url_without_userid": "https://www.arena-top100.com/index.php?a=in&u=pwember&id="
         },
         {
             "handle": "top100arena",
-            "name": "top100arena",
+            "waiting_time_in_seconds_for_next_vote": 86400,
+            "name": "Top100Arena",
+            "credit_count": 10,
             "btn_img_url": "https://www.top100arena.com/hit/100780/big",
             "voting_url_without_userid": "https://www.top100arena.com/listing/100780/vote?incentive="
         },
-
         {
             "handle": "gtop100",
-            "name": "gtop100",
+            "waiting_time_in_seconds_for_next_vote": 86400,
+            "name": "Gtop100",
+            "credit_count": 10,
             "btn_img_url": "https://gtop100.com/assets/images/votebutton.jpg",
             "voting_url_without_userid": "https://gtop100.com/topsites/Perfect-World/sitedetails/Perfect-World-Ember-103844?vote=1&pingUsername="
         },
         {
             "handle": "topg",
-            "name": "topg",
+            "waiting_time_in_seconds_for_next_vote": 43200,
+            "name": "Topg",
+            "credit_count": 10,
             "btn_img_url": "https://topg.org/topg2.gif",
             "voting_url_without_userid": "https://topg.org/perfect-world-private-servers/server-665948-"
+        },
+        {
+            "handle": "xtremetop100",
+            "waiting_time_in_seconds_for_next_vote": 43200,
+            "name": "Xtremetop100",
+            "credit_count": 20,
+            "btn_img_url": "https://www.xtremeTop100.com/votenew.jpg",
+            "voting_url_without_userid": "https://www.xtremetop100.com/in.php?site=1132376111&postback="
         }
     ]
 }

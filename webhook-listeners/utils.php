@@ -27,23 +27,35 @@ function insertEntryIntoDatabase($userid, $ip, $srcWebsite){
 
 
 
-function checkIfValidBasedOnIP($ip){
+function checkIfValidBasedOnIP($ip, $srcWebsite){
     
     global $settings;
 
     global $DB_HOST; global $DB_USER; global $DB_PASS; global $DB; global $DB_PORT;
 
-    $CYCLE_TIME_IN_HOURS =  $settings['cycle_time_in_hrs'];
-
     if(!is_numeric($CYCLE_TIME_IN_HOURS)){
         die("CYCLE_TIME_IN_HOURS is not numeric");
     }
 
-    $CYCLE_TIME_IN_HOURS = (int)  $settings['cycle_time_in_hrs'];
+    $waiting_time_in_seconds_for_next_vote = 0;
+
+    foreach ($settings['voting_websites'] as $voting_site) {
+        if($voting_site['handle'] === $srcWebsite ){
+            $waiting_time_in_seconds_for_next_vote = $voting_site['waiting_time_in_seconds_for_next_vote'];
+        }
+    }
+
+    if($waiting_time_in_seconds_for_next_vote == 0 || !is_numeric($waiting_time_in_seconds_for_next_vote)){
+        error_log("waiting time retrieved while validating is not nunreic or is0");
+        die("waiting time retrieved while validating is not nunreic or is0");
+    }
+
+    $waiting_time_in_seconds_for_next_vote = (int) $waiting_time_in_seconds_for_next_vote;
 
     $dbc = mysqli_connect($DB_HOST, $DB_USER, $DB_PASS, $DB, $DB_PORT);
 
-    $query = "SELECT TIMESTAMPDIFF(SECOND, user_votes.last_voted_at, NOW()) AS seconds_elapsed FROM user_votes WHERE ip_address ='$ip' ORDER BY last_voted_at DESC LIMIT 1 ";
+    $query = "SELECT TIMESTAMPDIFF(SECOND, user_votes.last_voted_at, NOW()) AS seconds_elapsed FROM user_votes WHERE 
+        vote_source_website = '$srcWebsite' AND ip_address ='$ip' ORDER BY last_voted_at DESC LIMIT 1 ";
 
     $result = mysqli_query($dbc, $query) or die(mysqli_error($dbc));
 
@@ -64,7 +76,7 @@ function checkIfValidBasedOnIP($ip){
 
     $secondsElapsedSinceLastVote = (int) $row['seconds_elapsed'];
 
-    if($secondsElapsedSinceLastVote < ($CYCLE_TIME_IN_HOURS * 3600) ){
+    if($secondsElapsedSinceLastVote < $waiting_time_in_seconds_for_next_vote ){
         // user tried to vote again within the cycle time
         echo "user tried to vote again withing the cycle time";
         error_log("user tried to vote again withing the cycle time");
@@ -80,33 +92,6 @@ function checkIfValidBasedOnIP($ip){
 
 }
 
-
-function dumpPOSTdata(){
-
-    // Read the raw POST data from php://input
-    $inputData = file_get_contents('php://input');
-
-    // Specify the path to the text file
-    $filePath = 'input_data.txt';
-
-    // Open the file in append mode
-    $fileHandle = fopen($filePath, 'a');
-
-    // Check if the file was opened successfully
-    if ($fileHandle) {
-        // Write the input data to the file
-        fwrite($fileHandle, $inputData . PHP_EOL);
-        
-        // Close the file
-        fclose($fileHandle);
-        error_log("Data successfully appended to the file.");
-        echo "Data successfully appended to the file.";
-    } else {
-        error_log("Data successfully appended to the file.");
-        echo "Failed to open the file.";
-    }
-
-}
 
 function returnSettings($filePath){
 
@@ -133,8 +118,33 @@ function returnSettings($filePath){
 
 function validateAndTakeAppropriateAction($userid, $ip, $srcWebsite){
 
-    if(checkIfValidBasedOnIP($ip)){
+    global $settings;
+
+    if(checkIfValidBasedOnIP($ip, $srcWebsite)){
+        
         insertEntryIntoDatabase($userid, $ip, $srcWebsite);
+
+        $creditMultipliesOnDaysOfMonth = $settings['credit_multiplier']['active_on_days_of_month'];
+
+        $multiplier =  1;
+
+        if(in_array(date('j'), $creditMultipliesOnDaysOfMonth)){
+            $multiplier =  $settings['credit_multiplier']['multiply_by'];
+        }
+
+        $creditCountForThisSrcWebsite = 0;
+
+        foreach ($settings['voting_websites'] as $voting_website) {
+            if($voting_website['handle'] === $srcWebsite ){
+               $creditCountForThisSrcWebsite = $voting_website['credit_count'] * $multiplier;
+               break; 
+            }
+        }
+
+        if($creditCountForThisSrcWebsite != 0){
+            updateCoinCount($userID, $creditCountForThisSrcWebsite);
+        }
+
     }else{
         error_log("user tried to vote within 12 hours");
         die("not valid");
@@ -161,4 +171,25 @@ function retrieveIpFromDatabase($userID){
 
     die("No record found");
     
+}
+
+function updateCoinCount($userid, $addby){
+    
+    if(!is_numeric($addby)){
+        error_log("addby is not numeric");
+        die("addby is not numeric");
+    }
+
+    global $ACC_DB_HOST; global $ACC_DB_USER; global $ACC_DB_PASS; global $ACC_DB;
+
+    $dbc = mysqli_connect($ACC_DB_HOST, $ACC_DB_USER, $ACC_DB_PASS, $ACC_DB) or die("Error connecting to the database");
+
+    $query = "UPDATE users SET iksilver = iksilver + $addby  WHERE user_id = '$userID' ";
+
+    $result = mysqli_query($dbc, $query) or die("Error adding count to the user user: " . mysqli_error($dbc));
+    
+    mysqli_close($dbc);
+
+    echo("coin updated successfully");
+
 }
