@@ -133,7 +133,7 @@ async function fetchDataAndRender(){
         
         return`
             <div  class="voting-data-wrapper col-12 col-sm-6 col-md-4">
-                <div onclick="handleVoteDataClick(event)"  data-src-website="${voting_website.handle}" class="voting-data align-items-center d-flex justify-content-center">
+                <div   class="voting-data align-items-center d-flex justify-content-center">
                     <div>
                         <h3  class="text-yellow">${voting_website.name}</h3>
                         ${
@@ -143,7 +143,9 @@ async function fetchDataAndRender(){
                                     <div class="text-yellow">
                                         ${  Math.floor((voting_website.waiting_time_in_seconds_for_next_vote - voting_website.seconds_elapsed) / 3600)   }h remaining
                                     </div>
-                                `: ``
+                                `: `
+                                    <buttondata-src-website="${voting_website.handle}" style="display:block; width:100%;z-index:111122;position:relative; padding: 5px 15px" onclick="handleVoteDataClick(event)">Vote</button>
+                                `
                         }
                         <img  class="pt-2" src="${voting_website.btn_img_url}" alt="${voting_website.name}" />
                         <div class="pt-2">YOU WILL RECEIVE</div>
