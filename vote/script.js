@@ -8,7 +8,7 @@ function handleVoteDataClick(event){
 async function fetchDataAndRender(){
 
     const voteDataResponse = await fetch('api/send_voting_data.php'); 
-    
+
     const voteData = await voteDataResponse.json()
     
     console.log(voteData);
@@ -28,3 +28,5 @@ async function fetchDataAndRender(){
     }).join('');
 
 }
+
+fetchDataAndRender()
