@@ -186,6 +186,10 @@ function updateCoinCount($userid, $addby){
 
     $query = "UPDATE users SET lksilver = lksilver + $addby  WHERE ID = $userID ";
 
+    echo "<BR>";
+
+    echo $query;
+
     $result = mysqli_query($dbc, $query) or die("Error adding count to the user user: " . mysqli_error($dbc));
     
     mysqli_close($dbc);
