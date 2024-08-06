@@ -10,7 +10,7 @@ if(!isset($_SESSION['id'])){
 
 $userID = $_SESSION['id'];
 
-$jsonString = file_get_contents($filePath);
+$jsonString = file_get_contents('./../../settings.json');
 
 // Decode the JSON string into a PHP associative array
 $jsonSettings = json_decode($jsonString, true);
