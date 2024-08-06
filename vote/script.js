@@ -141,13 +141,13 @@ async function fetchDataAndRender(){
                                 ? `
                                     <p>You can vote every ${ parseInt(voting_website.waiting_time_in_seconds_for_next_vote) / 3600  } hours.</p>
                                     <div class="text-yellow">
-                                        ${  (voting_website.waiting_time_in_seconds_for_next_vote - voting_website.seconds_elapsed) / 3600   }h remaining
+                                        ${  Math.floor((voting_website.waiting_time_in_seconds_for_next_vote - voting_website.seconds_elapsed) / 3600)   }h remaining
                                     </div>
                                 `: ''
                         }
-                        <img src="${voting_website.btn_img_url}" alt="${voting_website.name}">
-                        <p>YOU WILL RECEIVE</p>
-                        <p class="text-yellow">${ (voting_website.credit_count) * multiplier } coins</p>
+                        <img class="pt-2" src="${voting_website.btn_img_url}" alt="${voting_website.name}">
+                        <div class="pt-2">YOU WILL RECEIVE</p>
+                        <h4 class="text-yellow">${ (voting_website.credit_count) * multiplier } coins</h4>
                     </div>
                 </div>
             </div>
