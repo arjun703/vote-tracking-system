@@ -82,6 +82,7 @@ function handleVoteDataClick(event){
 // }
 
 async function handleVoteDataClick(event){
+    console.log("hello")
     const srcWebsite = event.target.getAttribute('data-src-website')
     if(srcWebsite == 'top100arena'){
         const resp =  await fetch('api/save_ip.php')
