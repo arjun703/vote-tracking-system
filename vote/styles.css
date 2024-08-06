@@ -1,11 +1,14 @@
 .voting-data-wrapper{
     padding:8px;
+    display: flex;
+    align-items: stretch;
 }
 
 .voting-data{
     box-shadow: 0 0px 3px 0 white;
     border-radius: 5px;
     padding:8px;
+    height: 100%;
 }
 
 body{
