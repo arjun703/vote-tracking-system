@@ -13,7 +13,8 @@ error_log($inputData);
 if(!isset($_GET['custom']) || !isset($_GET['votingip'])){
     die("Bad request");
 }
- 
+
+
 include './../../credentials.php';
 include './../utils.php';
 
