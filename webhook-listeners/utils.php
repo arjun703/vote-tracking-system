@@ -53,7 +53,6 @@ function checkIfValidBasedOnIP($ip, $srcWebsite){
     $query = "SELECT TIMESTAMPDIFF(SECOND, user_votes.last_voted_at, NOW()) AS seconds_elapsed FROM user_votes WHERE 
         vote_source_website = '$srcWebsite' AND ip_address ='$ip' ORDER BY last_voted_at DESC LIMIT 1 ";
 
-
     echo "<BR>";
 
     echo $query;

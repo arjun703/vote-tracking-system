@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 include './../../credentials.php';
 
 function saveIpToDatabase($userID, $ip){ 
@@ -43,3 +45,12 @@ function saveIpToDatabase($userID, $ip){
     die("No record found");
     
 }
+
+if(!isset($_SESSION['id']) || !isset($_SERVER['REMOTE_ADDR']) || empty($_SERVER['REMOTE_ADDR']) ){
+    die("session does not exist or remote addr not present");
+}
+
+$ipAddress = $_SERVER['REMOTE_ADDR'];
+
+
+saveIpToDatabase($_SESSION['id'], $ipAddress);

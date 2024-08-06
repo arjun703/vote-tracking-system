@@ -17,8 +17,6 @@ $query = "
 
 $result = mysqli_query($dbc, $query) or die(mysqli_error($dbc));
 
-
-
 $query = "
     CREATE TABLE IF NOT EXISTS users_ips (
         user_id VARCHAR(222) PRIMARY KEY,
@@ -27,4 +25,3 @@ $query = "
 ";
 
 $result = mysqli_query($dbc, $query) or die(mysqli_error($dbc));
-
