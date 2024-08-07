@@ -1,9 +1,103 @@
-<div class="container mt-5">
-        <div class="row" id="voteContainer">
+<div class="row-fluid abc">
+	<div class="box span12">
+		<div class="box-header well">
+			<h2>Voting System</h2>
+		</div>
+		<div class="box-content">
+			<div class="container pt-5 pb-8">
+				<div class="row" id="voteContainer">
 
-        </div>
-        <!-- Dynamic content will be inserted here -->
-    </div>
+				</div>
+				<!-- Dynamic content will be inserted here -->
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+<style>
+	.pb-8{
+		padding-bottom:2.5rem;
+	}
+	.pt-5{
+		padding-top: 1.5rem;
+	}
+.voting-data-wrapper{
+    padding:8px;
+    display: flex;
+    align-items: stretch;
+}
+
+.voting-data{
+    box-shadow: 0 0px 3px 0 black;
+    border-radius: 5px;
+    padding:8px;
+    height: 100%;
+    width: 100%;
+}
+
+
+.container *{
+    text-align: center;
+}
+
+.voting-data:hover{
+    cursor:pointer;
+    box-shadow: 0 0px 8px 0 black;
+}
+
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: -1rem; /* Adjust for row gutters */
+}
+
+/* Voting Data Wrapper equivalent to Bootstrap grid */
+.voting-data-wrapper {
+    flex: 1 1 33.33%; /* Ensure it takes up one-third of the row */
+    max-width: 30%; /* Limit the maximum width */
+}
+
+/* Responsive adjustments for small and medium screens */
+@media (max-width: 768px) {
+    .voting-data-wrapper {
+        flex: 1 1 50%; /* Two columns on small screens */
+        max-width: 50%;
+    }
+}
+
+@media (max-width: 576px) {
+    .voting-data-wrapper {
+        flex: 1 1 100%; /* One column on extra small screens */
+        max-width: 100%;
+    }
+}
+
+/* Align items center and flexbox utility */
+.voting-data {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* Padding top for images and other elements */
+.pt-2 {
+    padding-top: 0.5rem; /* Equivalent to pt-2 in Bootstrap */
+}
+
+/* Image styling */
+.img-responsive {
+    max-width: 100%; /* Ensure the image scales properly */
+    height: auto; /* Maintain aspect ratio */
+}
+
+</style>
+
+
 
     <script>
 
@@ -95,7 +189,7 @@ async function handleVoteDataClick(event){
     console.log("hello")
     const srcWebsite = event.target.getAttribute('data-src-website')
     if(srcWebsite == 'top100arena'){
-        const resp =  await fetch('api/save_ip.php')
+        const resp =  await fetch('./../vote-tracking-system/vote/api/save_ip.php')
         const respJson = await resp.json()
         console.log(respJson)
     }
@@ -119,7 +213,7 @@ async function handleVoteDataClick(event){
 
 async function fetchDataAndRender(){
 
-    const voteDataResponse = await fetch('api/send_voting_data.php'); 
+    const voteDataResponse = await fetch('./../vote-tracking-system/vote/api/send_voting_data.php'); 
 
     window.voteData = await voteDataResponse.json()
 
@@ -166,8 +260,8 @@ async function fetchDataAndRender(){
         `
     }).join('');
 
-    document.body.innerHTML += `
-        <div class="pt-5 text-center">${window.voteData.settings.disclaimer_text}</div>
+    document.querySelector('.container').innerHTML += `
+        <div style="margin-top:4px" class="pt-5 text-center">${window.voteData.settings.disclaimer_text}</div>
     `
 
 

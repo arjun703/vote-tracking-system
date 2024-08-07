@@ -2,13 +2,13 @@
 
 http_response_code(200);
 
-error_log("incoming request for xtremetop100");
+logError("incoming request for xtremetop100");
 echo "listening to xtremetop100";
 
 // Read the raw POST data from php://input
 $inputData = file_get_contents('php://input');
 
-error_log($inputData);
+logError($inputData);
 
 if(!isset($_GET['custom']) || !isset($_GET['votingip'])){
     die("Bad request");
@@ -30,5 +30,5 @@ $pingUsername = $_GET["custom"] ?? null;
 if ( !is_null($pingUsername) && !is_null($voterIP) && $valid  === 1 ){
     validateAndTakeAppropriateAction($pingUsername, $voterIP, 'xtremetop100');
 }else{
-    error_log("Either userid is null or not valid");
+    logError("Either userid is null or not valid");
 }

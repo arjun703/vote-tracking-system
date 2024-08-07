@@ -1,5 +1,29 @@
 <?php
 
+function logError($message) {
+    $logFile = 'logError.txt';
+    $currentDateTime = date('Y-m-d H:i:s'); // Get the current date and time
+    $formattedMessage = "[$currentDateTime] $message" . PHP_EOL; // Format the message
+
+    // Open the file in append mode, create it if it doesn't exist
+    if (!$fileHandle = fopen($logFile, 'a')) {
+        // If the file cannot be opened, return false
+        return false;
+    }
+
+    // Write the formatted message to the file
+    if (fwrite($fileHandle, $formattedMessage) === FALSE) {
+        // If the write operation fails, return false
+        return false;
+    }
+
+    // Close the file handle
+    fclose($fileHandle);
+    
+    // Return true on success
+    return true;
+}
+
 function insertEntryIntoDatabase($userid, $ip, $srcWebsite){
 
     global $DB_HOST; global $DB_USER; global $DB_PASS; global $DB; global $DB_PORT;
@@ -20,7 +44,7 @@ function insertEntryIntoDatabase($userid, $ip, $srcWebsite){
     mysqli_query($dbc, $query)  or die(mysqli_error($dbc));
 
     echo "Succesfully inserted the data";
-    error_log("Succesfully inserted the data");
+    logError("Succesfully inserted the data");
     mysqli_close($dbc);
 
 }
@@ -42,7 +66,7 @@ function checkIfValidBasedOnIP($ip, $srcWebsite){
     }
 
     if($waiting_time_in_seconds_for_next_vote == 0 || !is_numeric($waiting_time_in_seconds_for_next_vote)){
-        error_log("waiting time retrieved while validating is not nunreic or is0");
+        logError("waiting time retrieved while validating is not nunreic or is0");
         die("waiting time retrieved while validating is not nunreic or is0");
     }
 
@@ -62,7 +86,7 @@ function checkIfValidBasedOnIP($ip, $srcWebsite){
     if(mysqli_num_rows($result) === 0){
         // user has never voted
         echo "user has never voted";
-        error_log("user has never voted");
+        logError("user has never voted");
         mysqli_close($dbc);
         return true;
     }
@@ -70,7 +94,7 @@ function checkIfValidBasedOnIP($ip, $srcWebsite){
     $row = mysqli_fetch_assoc($result);
 
     if(!is_numeric($row['seconds_elapsed'])){
-        error_log("seconds elapsed is not numeric");
+        logError("seconds elapsed is not numeric");
         die("seconds elapsed is not numeric");
     }
 
@@ -79,12 +103,12 @@ function checkIfValidBasedOnIP($ip, $srcWebsite){
     if($secondsElapsedSinceLastVote < $waiting_time_in_seconds_for_next_vote ){
         // user tried to vote again within the cycle time
         echo "user tried to vote again withing the cycle time of " . $waiting_time_in_seconds_for_next_vote;
-        error_log("user tried to vote again withing the cycle time");
+        logError("user tried to vote again withing the cycle time");
         mysqli_close($dbc);
         return false;
     }else{
         // okay to vote
-        error_log("okay to vote");
+        logError("okay to vote");
         echo "okay to vote";
         mysqli_close($dbc);
         return true;
@@ -108,7 +132,7 @@ function returnSettings($filePath){
 
     // Check if JSON decoding was successful
     if (json_last_error() !== JSON_ERROR_NONE) {
-        error_log("Error decoding JSON: " . json_last_error_msg());
+        logError("Error decoding JSON: " . json_last_error_msg());
         die('Error decoding JSON: ' . json_last_error_msg());
     }
 
@@ -146,7 +170,7 @@ function validateAndTakeAppropriateAction($userid, $ip, $srcWebsite){
         }
 
     }else{
-        error_log("user tried to vote within waiting time");
+        logError("user tried to vote within waiting time. Terminatingf.");
         die("not valid");
     }
     
@@ -169,18 +193,18 @@ function retrieveIpFromDatabase($userID){
         }
     }
 
-    die("No record found");
+    logError("No record found while retrieveing ip. Terminating");
     
 }
 
 function updateCoinCount($userid, $addby){
     
     if(!is_numeric($addby)){
-        error_log("addby is not numeric");
+        logError("addby is not numeric");
         die("addby is not numeric");
     }
 
-    error_log("trying to add $addby coins to $userid");
+    logError("trying to add $addby coins to $userid");
 
     echo "trying to add $addby coins to $userid";
 
@@ -198,6 +222,6 @@ function updateCoinCount($userid, $addby){
     
     mysqli_close($dbc);
 
-    echo("coin updated successfully");
+    logError("coin updated successfully");
 
 }

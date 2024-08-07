@@ -1,6 +1,6 @@
 <?php
 
-error_log("incoming request for gtop100");
+logError("incoming request for gtop100");
 
 http_response_code(200);
 
@@ -8,7 +8,7 @@ http_response_code(200);
 // Read the raw POST data from php://input
 $inputData = file_get_contents('php://input');
 
-error_log($inputData);
+logError($inputData);
 
 if(!isset($_POST['pingUsername']) || !isset($_POST['VoterIP']) ||  !isset($_POST['Successful']) ){
     die("Bad request");
@@ -33,5 +33,5 @@ $pingUsername = $_POST["pingUsername"] ?? null;
 if (!is_null($pingUsername) && !is_null($voterIP) && $success  === 0 ){
     validateAndTakeAppropriateAction($pingUsername, $voterIP, 'gtop100');
 }else{
-    error_log("Either userid is null or voterid is null or not success");
+    logError("Either userid is null or voterid is null or not success");
 }
