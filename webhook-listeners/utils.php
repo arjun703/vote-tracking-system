@@ -51,7 +51,7 @@ function insertEntryIntoDatabase($userid, $ip, $srcWebsite){
 
 }
 
-function checkIfValidBasedOnIP($ip, $srcWebsite){
+function checkIfValidBasedOnIP($ip, $srcWebsite, $userID){
     
     global $settings;
 
@@ -75,7 +75,7 @@ function checkIfValidBasedOnIP($ip, $srcWebsite){
     $dbc = mysqli_connect($DB_HOST, $DB_USER, $DB_PASS, $DB, $DB_PORT);
 
     $query = "SELECT TIMESTAMPDIFF(SECOND, user_votes.last_voted_at, NOW()) AS seconds_elapsed FROM user_votes WHERE 
-        vote_source_website = '$srcWebsite' AND ip_address ='$ip' ORDER BY last_voted_at DESC LIMIT 1 ";
+       ( (vote_source_website = '$srcWebsite' AND ip_address ='$ip' ) OR (vote_source_website = '$srcWebsite' AND user_id ='$userID' ))  ORDER BY last_voted_at DESC LIMIT 1 ";
 
     echo "<BR>";
 
@@ -144,7 +144,7 @@ function validateAndTakeAppropriateAction($userid, $ip, $srcWebsite){
 
     global $settings;
 
-    if(checkIfValidBasedOnIP($ip, $srcWebsite)){
+    if(checkIfValidBasedOnIP($ip, $srcWebsite, $userid)){
         
         insertEntryIntoDatabase($userid, $ip, $srcWebsite);
 
