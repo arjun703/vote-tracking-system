@@ -18,8 +18,6 @@ logError("userid");
 
 echo "listening to top100arena";
  
-
- 
 // Read the raw POST data from php://input
 $inputData = file_get_contents('php://input');
 

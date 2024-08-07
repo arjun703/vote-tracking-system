@@ -49,8 +49,6 @@ function insertEntryIntoDatabase($userid, $ip, $srcWebsite){
 
 }
 
-
-
 function checkIfValidBasedOnIP($ip, $srcWebsite){
     
     global $settings;
