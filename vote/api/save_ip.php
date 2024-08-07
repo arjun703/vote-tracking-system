@@ -41,8 +41,6 @@ function saveIpToDatabase($userID, $ip){
             error_log(mysqli_error($dbc));
         }
     }
-
-    die("No record found");
     
 }
 
@@ -52,5 +50,6 @@ if(!isset($_SESSION['id']) || !isset($_SERVER['REMOTE_ADDR']) || empty($_SERVER[
 
 $ipAddress = $_SERVER['REMOTE_ADDR'];
 
+echo $ipAddress;
 
 saveIpToDatabase($_SESSION['id'], $ipAddress);
