@@ -13,7 +13,6 @@ if(!isset($_POST['userid']) || !isset($_POST['userip']) ||  !isset($_POST['voted
     die("Bad request");
 }
 
-logError("userid");
 
 echo "listening to etopgames";
  

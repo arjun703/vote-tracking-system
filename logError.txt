@@ -1,0 +1,5 @@
+[2024-08-07 03:44:11] incoming request for etopgames
+[2024-08-07 03:44:11] userid
+[2024-08-07 03:44:11] 
+[2024-08-07 03:44:11] user tried to vote again withing the cycle time
+[2024-08-07 03:44:11] user tried to vote within waiting time. Terminatingf.
