@@ -17,9 +17,6 @@ logError("userid");
 
 echo "listening to etopgames";
  
-include './../../credentials.php';
-include './../utils.php';
- 
 // Read the raw POST data from php://input
 $inputData = file_get_contents('php://input');
 
