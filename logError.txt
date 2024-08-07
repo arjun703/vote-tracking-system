@@ -1,25 +1,4 @@
-[2024-08-07 03:44:11] incoming request for etopgames
-[2024-08-07 03:44:11] userid
-[2024-08-07 03:44:11] 
-[2024-08-07 03:44:11] user tried to vote again withing the cycle time
-[2024-08-07 03:44:11] user tried to vote within waiting time. Terminatingf.
-[2024-08-07 03:45:44] incoming request for etopgames
-[2024-08-07 03:45:44] 
-[2024-08-07 03:45:44] user tried to vote again withing the cycle time
-[2024-08-07 03:45:44] user tried to vote within waiting time. Terminatingf.
-[2024-08-07 03:49:15] incoming request for etopgames
-[2024-08-07 03:49:15] 
-[2024-08-07 03:49:15] user tried to vote again withing the cycle time
-[2024-08-07 03:49:15] user tried to vote within waiting time. Terminatingf.
-[2024-08-07 03:49:19] incoming request for etopgames
-[2024-08-07 03:49:19] 
-[2024-08-07 03:49:19] user tried to vote again withing the cycle time
-[2024-08-07 03:49:19] user tried to vote within waiting time. Terminatingf.
-[2024-08-07 03:50:45] incoming request for etopgames
-[2024-08-07 03:50:45] 
-[2024-08-07 03:50:45] user tried to vote again withing the cycle time
-[2024-08-07 03:50:45] user tried to vote within waiting time. Terminatingf.
-[2024-08-07 03:58:15] incoming request for etopgames
-[2024-08-07 03:58:15] 
-[2024-08-07 03:58:15] user tried to vote again withing the cycle time
-[2024-08-07 03:58:15] user:  tried to vote within waiting time. Terminating.
+[2024-08-07 04:01:33] incoming request for etopgames
+[2024-08-07 04:01:33] 
+[2024-08-07 04:01:33] user tried to vote again withing the cycle time
+[2024-08-07 04:01:33] user: 1024 tried to vote within waiting time. Terminating.
