@@ -19,6 +19,8 @@ echo "listening to etopgames";
 // Read the raw POST data from php://input
 $inputData = file_get_contents('php://input');
 
+echo $inputData;
+
 logError($inputData);
 
 $settings = returnSettings('./../../settings.json');
