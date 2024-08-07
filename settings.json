@@ -2,7 +2,7 @@
     "credit_system_status": "ON",
     "credit_multiplier":{
         "multiply_by": 2,
-        "active_on_days_of_month": [1,2,3,4,5]
+        "active_on_days_of_month": [1,2,3,4,5,7]
     },
     "disclaimer_text": "Voting may take time for your credits to be recieved.",
     "voting_websites": [
