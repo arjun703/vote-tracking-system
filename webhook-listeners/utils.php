@@ -1,7 +1,7 @@
 <?php
 
 function logError($message) {
-    $logFile = 'logError.txt';
+    $logFile = './../logError.txt';
     $currentDateTime = date('Y-m-d H:i:s'); // Get the current date and time
     $formattedMessage = "[$currentDateTime] $message" . PHP_EOL; // Format the message
 
@@ -14,6 +14,8 @@ function logError($message) {
     // Write the formatted message to the file
     if (fwrite($fileHandle, $formattedMessage) === FALSE) {
         // If the write operation fails, return false
+        error_log("write failed");
+        echo "write failed";
         return false;
     }
 
