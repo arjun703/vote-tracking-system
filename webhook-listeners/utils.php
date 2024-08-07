@@ -170,7 +170,7 @@ function validateAndTakeAppropriateAction($userid, $ip, $srcWebsite){
         }
 
     }else{
-        logError("user tried to vote within waiting time. Terminatingf.");
+        logError("user: $uesrid tried to vote within waiting time. Terminating.");
         die("not valid");
     }
     
