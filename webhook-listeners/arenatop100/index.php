@@ -2,6 +2,9 @@
 
 session_start();
 
+include './../../credentials.php';
+include './../utils.php';
+ 
 logError("incoming request for arenatop100");
 
 http_response_code(200);
@@ -11,10 +14,7 @@ if(!isset($_POST['userid']) || !isset($_POST['userip']) ||  !isset($_POST['voted
 }
 
 echo "listening to arenatop100";
- 
-include './../../credentials.php';
-include './../utils.php';
- 
+
 // Read the raw POST data from php://input
 $inputData = file_get_contents('php://input');
 

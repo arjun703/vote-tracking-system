@@ -1,6 +1,11 @@
 <?php
  
+ include './../../credentials.php';
+ include './../utils.php';
+
 logError("incoming request for etopgames");
+
+
 
 http_response_code(200);
  

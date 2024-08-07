@@ -2,6 +2,9 @@
 
 http_response_code(200);
 
+include './../../credentials.php';
+include './../utils.php';
+
 logError("incoming request for top100arena");
 
 logError(json_encode($_GET));
@@ -15,8 +18,7 @@ logError("userid");
 
 echo "listening to top100arena";
  
-include './../../credentials.php';
-include './../utils.php';
+
  
 // Read the raw POST data from php://input
 $inputData = file_get_contents('php://input');

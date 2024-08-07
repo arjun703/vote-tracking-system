@@ -2,6 +2,10 @@
 
 http_response_code(200);
 
+include './../../credentials.php';
+include './../utils.php';
+
+
 logError("incoming request for topg");
 echo "listening to topg";
 
@@ -13,10 +17,6 @@ logError($inputData);
 if(!isset($_GET['p_resp']) || !isset($_GET['ip'])){
     die("Bad request");
 }
-
- 
-include './../../credentials.php';
-include './../utils.php';
 
 $settings = returnSettings('./../../settings.json');
 

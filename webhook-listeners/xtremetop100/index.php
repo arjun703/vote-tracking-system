@@ -2,6 +2,10 @@
 
 http_response_code(200);
 
+include './../../credentials.php';
+include './../utils.php';
+
+
 logError("incoming request for xtremetop100");
 echo "listening to xtremetop100";
 
@@ -13,10 +17,6 @@ logError($inputData);
 if(!isset($_GET['custom']) || !isset($_GET['votingip'])){
     die("Bad request");
 }
-
-
-include './../../credentials.php';
-include './../utils.php';
 
 $settings = returnSettings('./../../settings.json');
 

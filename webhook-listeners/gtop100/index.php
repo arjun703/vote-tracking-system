@@ -1,6 +1,11 @@
 <?php
 
+include './../../credentials.php';
+include './../utils.php';
+
 logError("incoming request for gtop100");
+
+
 
 http_response_code(200);
 
@@ -16,8 +21,6 @@ if(!isset($_POST['pingUsername']) || !isset($_POST['VoterIP']) ||  !isset($_POST
 
 echo "listening to gtop100";
  
-include './../../credentials.php';
-include './../utils.php';
 
 $settings = returnSettings('./../../settings.json');
 
